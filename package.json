@@ -1,0 +1,52 @@
+{
+	"name": "gosvelte",
+	"description": "Monorepo boilerplate for SvelteKit and Golang development",
+	"version": "0.0.1",
+	"author": {
+		"name": "Antonio Sarro",
+		"url": "https://antoniosarro.dev",
+		"email": "contact@antoniosarro.dev"
+	},
+	"type": "module",
+	"packageManager": "pnpm@10.2.0",
+	"engines": {
+		"node": ">=22"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/antoniosarro/gosvelte.git"
+	},
+	"scripts": {
+		"dev": "turbo dev",
+		"dev:web": "turbo watch --filter @gosvelte/web dev",
+		"dev:server": "turbo watch --filter @gosvelte/server dev",
+		"build": "turbo build",
+		"build:web": "turbo build --filter @gosvelte/web",
+		"build:server": "turbo build --filter @gosvelte/server",
+		"lint:web": "turbo run //#globallint --no-daemon",
+		"lint:server": "turbo lint --filter @gosvelte/server",
+		"format:web": "prettier --write .",
+		"format:server": "turbo format --filter @gosvelte/server",
+		"globallint": "prettier --check . && eslint ."
+	},
+	"devDependencies": {
+		"@eslint/compat": "^1.2.5",
+		"@eslint/js": "^9.18.0",
+		"eslint": "^9.18.0",
+		"eslint-config-prettier": "^10.0.1",
+		"eslint-plugin-svelte": "^2.46.1",
+		"eslint-plugin-simple-import-sort": "^12.1.1",
+		"globals": "^15.14.0",
+		"prettier": "^3.4.2",
+		"prettier-plugin-svelte": "^3.3.3",
+		"prettier-plugin-tailwindcss": "^0.6.11",
+		"turbo": "^2.4.2",
+		"typescript": "^5.0.0",
+		"typescript-eslint": "^8.20.0"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"esbuild"
+		]
+	}
+}

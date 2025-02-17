@@ -1,0 +1,31 @@
+{
+	"eslint.useFlatConfig": true,
+	"eslint.validate": ["svelte"],
+	"eslint.workingDirectories": ["."],
+	"svelte.enable-ts-plugin": true,
+	"prettier.configPath": ".prettierrc.mjs",
+	"prettier.useEditorConfig": false,
+	"editor.defaultFormatter": null,
+	"[svelte]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[mdx]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"explorer.excludeGitIgnore": true
+}

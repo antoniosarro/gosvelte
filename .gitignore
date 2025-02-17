@@ -1,0 +1,19 @@
+# Nix FLake direnv
+.direnv/
+
+# Env
+.env
+.env.*
+
+# Node
+node_modules
+.turbo
+
+# Go
+tmp
+outputs
+bin
+
+# Svelte
+.svelte-kit
+

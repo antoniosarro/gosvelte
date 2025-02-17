@@ -1,0 +1,10 @@
+{
+	"name": "@gosvelte/server",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "air",
+		"build": "go build -o ./bin/server ./main.go",
+		"lint": "golangci-lint run",
+		"format": "go fmt"
+	}
+}

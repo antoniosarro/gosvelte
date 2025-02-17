@@ -1,0 +1,30 @@
+{
+	"$schema": "https://turbo.build/schema.json",
+	"ui": "tui",
+	"tasks": {
+		"build": {
+			"dependsOn": ["^build"],
+			"inputs": ["$TURBO_DEFAULT$", ".env*"]
+		},
+		"server#build": {
+			"dependsOn": ["^build"],
+			"outputs": ["bin/server"],
+			"cache": true,
+			"inputs": ["go.mod", "go.sum", "**/*.go"]
+		},
+		"lint": {
+			"dependsOn": ["^lint"]
+		},
+		"lint:fix": {
+			"dependsOn": ["^lint:fix"]
+		},
+		"format": {
+			"dependsOn": ["^format"]
+		},
+		"//#globallint": {},
+		"dev": {
+			"cache": false,
+			"persistent": true
+		}
+	}
+}

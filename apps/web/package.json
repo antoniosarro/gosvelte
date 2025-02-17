@@ -1,0 +1,21 @@
+{
+	"name": "@gosvelte/web",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"prepare": "svelte-kit sync || echo ''"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-node": "catalog:svelte",
+		"@sveltejs/kit": "catalog:svelte",
+		"@sveltejs/vite-plugin-svelte": "catalog:svelte",
+		"@tailwindcss/vite": "catalog:tailwindcss",
+		"svelte": "catalog:svelte",
+		"svelte-check": "catalog:svelte",
+		"tailwindcss": "catalog:tailwindcss",
+		"vite": "catalog:"
+	}
+}
