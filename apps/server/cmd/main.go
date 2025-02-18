@@ -30,7 +30,7 @@ import (
 //	@in							header
 //	@name						Authorization
 
-// @BasePath	/
+// @BasePath	/api/v1
 func main() {
 	conf, err := config.Load()
 	if err != nil {

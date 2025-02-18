@@ -41,7 +41,7 @@ func New(conf *config.Config, log *logger.Log, dbRepo iDBRepository, cacheRepo i
 	}
 }
 
-func (uc *Usecase) Register(ctx context.Context, na *account.NewAccouuntDTO) (*account.AccountDTO, error) {
+func (uc *Usecase) Register(ctx context.Context, na *account.NewAccountDTO) (*account.AccountDTO, error) {
 	exist, err := uc.dbRepo.GetOneByEmail(ctx, na.Email)
 	if exist != nil && err == nil {
 		err := httperrors.New(httperrors.AlreadyExists, "Email not available")

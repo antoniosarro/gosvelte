@@ -88,6 +88,39 @@ const docTemplate = `{
                 }
             }
         },
+        "/me": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Retrive logged user info",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Account Actions"
+                ],
+                "summary": "Retrive logged user info",
+                "operationId": "account-me",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/account.AccountDTO"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {}
+                    }
+                }
+            }
+        },
         "/refresh": {
             "post": {
                 "security": [
@@ -120,6 +153,45 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/register": {
+            "post": {
+                "description": "Perform register of a new user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Account Actions"
+                ],
+                "summary": "Register a user",
+                "operationId": "account-register",
+                "parameters": [
+                    {
+                        "description": "User's credentials",
+                        "name": "params",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/account.NewAccountDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/account.AccountDTO"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {}
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -145,6 +217,23 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "account.NewAccountDTO": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "firstname": {
+                    "type": "string"
+                },
+                "lastname": {
+                    "type": "string"
+                },
+                "password": {
                     "type": "string"
                 }
             }
@@ -188,7 +277,7 @@ const docTemplate = `{
 var SwaggerInfo = &swag.Spec{
 	Version:          "0.0.1",
 	Host:             "",
-	BasePath:         "/",
+	BasePath:         "/api/v1",
 	Schemes:          []string{},
 	Title:            "gosvelte monorepo",
 	Description:      "Boilerplate for Echo Golang development.",

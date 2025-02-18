@@ -19,14 +19,14 @@ type AccountDTO struct {
 	UpdatedAt time.Time `json:"updated_at"`
 }
 
-type NewAccouuntDTO struct {
+type NewAccountDTO struct {
 	Firstname string `json:"firstname"`
 	Lastname  string `json:"lastname"`
 	Password  string `json:"password"`
 	Email     string `json:"email"`
 }
 
-func (na NewAccouuntDTO) Validate() error {
+func (na NewAccountDTO) Validate() error {
 	return validation.ValidateStruct(
 		&na,
 		validation.Field(&na.Firstname, validation.Required, validation.Length(1, 30)),
