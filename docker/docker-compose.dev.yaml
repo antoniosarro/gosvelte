@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:17.3-alpine3.20
+    ports:
+      - 5431:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: root
+    restart: unless-stopped
+    networks:
+      - postgres
+  cloudbeaver:
+    image: dbeaver/cloudbeaver:latest
+    ports:
+      - 8081:8978
+    restart: unless-stopped
+    networks:
+      - postgres
+  redis-stack:
+    image: redis/redis-stack:latest
+    ports:
+      - 6379:6379
+      - 8001:8001
+    restart: unless-stopped
+volumes:
+  postgres_data:
+    external: true
+networks:
+  postgres:
+    driver: bridge
