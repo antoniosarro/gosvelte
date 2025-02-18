@@ -31,6 +31,8 @@
           go-tools
           golangci-lint
           air
+          go-swag
+          go-migrate
         ];
 
         # runtime Deps

@@ -3,12 +3,13 @@ root = "."
 tmp_dir = "tmp"
 
 [build]
-  cmd = "go run main.go"
+  cmd = "swag init -g ./cmd/main.go && go build -o ./tmp/main ./cmd/."
   bin = "./tmp/main"
   delay = 1000 # ms
-  exclude_dir = ["assets", "tmp", "vendor"]
-  include_ext = ["go", "tpl", "tmpl", "html"]
-  exclude_regex = ["_test\\.go"]
+  exclude_dir = [".turbo", "assets", "tmp", "vendor", "docs"]
+
+[run]
+  cmd = "./tmp/main"
 
 [log]
   time = false
@@ -22,11 +23,3 @@ tmp_dir = "tmp"
 
 [misc]
   clean_on_exit = true
-
-# .gitignore (append this)
-/tmp
-.air.toml
-
-# Makefile
-dev:
-    air

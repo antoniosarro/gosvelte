@@ -1,0 +1,116 @@
+basePath: /
+definitions:
+  account.AccountDTO:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      firstname:
+        type: string
+      id:
+        type: string
+      lastname:
+        type: string
+      role:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  auth.AuthDTO:
+    properties:
+      access_token:
+        type: string
+      account:
+        $ref: '#/definitions/account.AccountDTO'
+      refresh_token:
+        type: string
+    type: object
+  auth.LoginDTO:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+info:
+  contact:
+    email: contact@antoniosarro.dev
+    name: Antonio Sarro
+    url: https://www.antoniosarro.dev
+  description: Boilerplate for Echo Golang development.
+  title: gosvelte monorepo
+  version: 0.0.1
+paths:
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: Perform user login
+      operationId: auth-login
+      parameters:
+      - description: User's credentials
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/auth.LoginDTO'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/auth.AuthDTO'
+        "401":
+          description: Unauthorized
+          schema: {}
+      summary: Authenticate a user
+      tags:
+      - Auth Actions
+  /logout:
+    post:
+      consumes:
+      - application/json
+      description: Perform user logout
+      operationId: auth-logout
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "401":
+          description: Unauthorized
+          schema: {}
+      security:
+      - ApiKeyAuth: []
+      summary: Disconnect a user
+      tags:
+      - Auth Actions
+  /refresh:
+    post:
+      consumes:
+      - application/json
+      description: Refresh user token
+      operationId: auth-refresh
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/auth.AuthDTO'
+        "401":
+          description: Unauthorized
+          schema: {}
+      security:
+      - ApiKeyAuth: []
+      summary: Refresh user token
+      tags:
+      - Auth Actions
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
